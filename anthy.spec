@@ -1,6 +1,6 @@
-%define	version   8300
+%define	version   8700b
 %define	release   %mkrel 1
-%define	dic_date  20061121
+%define	dic_date  20070114
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -15,7 +15,7 @@ Release:   %{release}
 Group:     System/Internationalization
 License:   GPL
 URL:       http://www.sourceforge.jp/projects/anthy/
-Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.bz2
+Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
 # (ut) I modified gcanna.ctd (a dictionary for Anthy).
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
@@ -52,7 +52,7 @@ Anthy development package: static libraries, header files, and the like.
 
 %prep
 %setup -q
-%patch0 -p0
+#%patch0 -p0
 
 # update cannadic
 cp %SOURCE1 .
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/*
 %{_datadir}/anthy
-%{_datadir}/emacs/site-lisp/*
+#%{_datadir}/emacs/site-lisp/*
 
 %files -n %{libname}
 %defattr(-,root,root)
