@@ -1,4 +1,4 @@
-%define	version   8700b
+%define	version   8819
 %define	release   %mkrel 1
 %define	dic_date  20070114
 
@@ -57,11 +57,11 @@ Anthy development package: static libraries, header files, and the like.
 # update cannadic
 cp %SOURCE1 .
 tar -jxf %SOURCE1
-cp -f anthy_gcanna_ut-%{dic_date}/gcanna.ctd.%{dic_date} cannadic/gcanna.ctd
+cp -f anthy_gcanna_ut-%{dic_date}/gcanna.ctd.%{dic_date} alt-cannadic/gcanna.ctd
 
 %build
 %configure2_5x
-%make
+%make -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/*
 %{_datadir}/anthy
-%{_datadir}/emacs/site-lisp/*
+#%{_datadir}/emacs/site-lisp/*
 
 %files -n %{libname}
 %defattr(-,root,root)
