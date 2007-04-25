@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/*
 %{_datadir}/anthy
-#%{_datadir}/emacs/site-lisp/*
+%{_datadir}/emacs/site-lisp/anthy/*
 
 %files -n %{libname}
 %defattr(-,root,root)
