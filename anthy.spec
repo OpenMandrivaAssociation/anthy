@@ -61,7 +61,8 @@ cp -f anthy_gcanna_ut-%{dic_date}/gcanna.ctd.%{dic_date} alt-cannadic/gcanna.ctd
 
 %build
 %configure2_5x
-%make -j1
+# parallel doesn't work at the time.
+make -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
