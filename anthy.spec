@@ -1,4 +1,4 @@
-%define	version   8819
+%define	version   8906
 %define	release   %mkrel 1
 %define	dic_date  20070114
 
@@ -96,6 +96,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-
-
-
