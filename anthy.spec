@@ -1,4 +1,4 @@
-%define	version   8921
+%define	version   9011
 %define	release   %mkrel 1
 %define	dic_date  20070114
 
