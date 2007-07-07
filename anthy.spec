@@ -1,4 +1,4 @@
-%define	version   9011
+%define	version   9100
 %define	release   %mkrel 1
 %define	dic_date  20070114
 
@@ -7,6 +7,7 @@
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
+%define develname %mklibname -d %name
 
 Name:      anthy
 Summary:   A Japanese words input system
@@ -39,14 +40,15 @@ Provides:   %{libname_orig} = %{version}-%{release}
 %description -n %{libname}
 Anthy library.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:    Headers of %{name} for development
 Group:      Development/C
 Requires:   %{libname} = %{version}
 Provides:   %{name}-devel = %{version}-%{release}
 Provides:   %{libname_orig}-devel = %{version}-%{release}
+Obsoletes:  %{libname}-devel
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Anthy development package: static libraries, header files, and the like.
 
 
@@ -89,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 # (tv) fix uim dloading libanthy.so
 %{_libdir}/*.so
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/*.a
