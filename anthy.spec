@@ -1,6 +1,6 @@
 %define	version   9100
-%define	release   %mkrel 1
-%define	dic_date  20070114
+%define	release   %mkrel 2
+%define	dic_date  070805
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -18,11 +18,13 @@ License:   GPL
 URL:       http://www.sourceforge.jp/projects/anthy/
 Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
-# (ut) I modified gcanna.ctd (a dictionary for Anthy).
-# http://www.geocities.jp/ep3797/anthy_dict_01.html
-Source1:   anthy_gcanna_ut-%{dic_date}.tar.bz2
+# http://sourceforge.jp/projects/alt-cannadic/files/
+Source1:   alt-cannadic-%{dic_date}.tar.bz2
 
-Patch0:    anthy_name.t.diff
+# (ut) They will be merged upstream soon.
+Patch0:    anthy-name.t.diff
+Patch1:    anthy-fix-bugs.diff
+Patch2:    anthy-remove-experimental-dic.diff
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -54,12 +56,17 @@ Anthy development package: static libraries, header files, and the like.
 
 %prep
 %setup -q
-#%patch0 -p0
+%patch0 -p0
+%patch1 -p0
+%patch2 -p0
 
 # update cannadic
 cp %SOURCE1 .
 tar -jxf %SOURCE1
-cp -f anthy_gcanna_ut-%{dic_date}/gcanna.ctd.%{dic_date} alt-cannadic/gcanna.ctd
+cp alt-cannadic-%{dic_date}/*.ctd alt-cannadic
+
+# remove an experimental dictionary
+rm alt-cannadic/gtankan-okuri.ctd
 
 %build
 %configure2_5x
