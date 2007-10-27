@@ -1,6 +1,6 @@
-%define	version   9100
-%define	release   %mkrel 2
-%define	dic_date  070805
+%define	version   9100c
+%define	release   %mkrel 1
+%define	dic_date  071023
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -20,11 +20,6 @@ Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
 # http://sourceforge.jp/projects/alt-cannadic/files/
 Source1:   alt-cannadic-%{dic_date}.tar.bz2
-
-# (ut) They will be merged upstream soon.
-Patch0:    anthy-name.t.diff
-Patch1:    anthy-fix-bugs.diff
-Patch2:    anthy-remove-experimental-dic.diff
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -56,9 +51,6 @@ Anthy development package: static libraries, header files, and the like.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
 
 # update cannadic
 cp %SOURCE1 .
@@ -66,7 +58,7 @@ tar -jxf %SOURCE1
 cp alt-cannadic-%{dic_date}/*.ctd alt-cannadic
 
 # remove an experimental dictionary
-rm alt-cannadic/gtankan-okuri.ctd
+#rm alt-cannadic/gtankan-okuri.ctd
 
 %build
 %configure2_5x
