@@ -21,7 +21,6 @@ Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 # http://sourceforge.jp/projects/alt-cannadic/files/
 Source1:   alt-cannadic-%{dic_date}.tar.bz2
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 BuildRequires:   emacs-bin
 
