@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 1
-%define	dic_date  071023
+%define	release   %mkrel 2
+%define	dic_date  20080121
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -18,8 +18,8 @@ License:   GPLv2+
 URL:       http://www.sourceforge.jp/projects/anthy/
 Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
-# http://sourceforge.jp/projects/alt-cannadic/files/
-Source1:   alt-cannadic-%{dic_date}.tar.bz2
+# http://www.geocities.jp/ep3797/anthy_dict_01.html
+Source1:   http://www.geocities.jp/ep3797/snapshot/anthy_dict/anthy-ut-patches-%{dic_date}.tar.bz2
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -52,18 +52,21 @@ Anthy development package: static libraries, header files, and the like.
 %prep
 %setup -q
 
-# update cannadic
+# update dictionaries and apply patches
 cp %SOURCE1 .
 tar -jxf %SOURCE1
-cp alt-cannadic-%{dic_date}/*.ctd alt-cannadic
-
-# remove an experimental dictionary
-#rm alt-cannadic/gtankan-okuri.ctd
+cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic
+cp anthy-ut-patches-%{dic_date}/zipcode.t mkworddic
+patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-depgraph.diff
+patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-diclist.diff
 
 %build
 %configure2_5x
 # parallel doesn't work at the time.
 make -j1
+
+# remove anthy's corpus. it often returns bad results.
+make update_params0
 
 %install
 rm -rf $RPM_BUILD_ROOT
