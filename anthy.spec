@@ -57,7 +57,7 @@ cp %SOURCE1 .
 tar -jxf %SOURCE1
 cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic
 cp anthy-ut-patches-%{dic_date}/zipcode.t mkworddic
-patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-depgraph.diff
+#patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-depgraph.diff
 patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-diclist.diff
 
 %build
