@@ -1,4 +1,4 @@
-%define	version   9100d
+%define	version   9100e
 %define	release   %mkrel 1
 %define	dic_date  071023
 
@@ -14,7 +14,7 @@ Summary:   A Japanese words input system
 Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
-License:   GPL
+License:   GPLv2+
 URL:       http://www.sourceforge.jp/projects/anthy/
 Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
@@ -43,7 +43,7 @@ Group:      Development/C
 Requires:   %{libname} = %{version}
 Provides:   %{name}-devel = %{version}-%{release}
 Provides:   %{libname_orig}-devel = %{version}-%{release}
-Obsoletes:  %{libname}-devel
+Obsoletes:  %mklibname -d anthy 0
 
 %description -n %{develname}
 Anthy development package: static libraries, header files, and the like.
