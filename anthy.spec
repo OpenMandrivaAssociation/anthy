@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 2
-%define	dic_date  20080121
+%define	release   %mkrel 3
+%define	dic_date  20080207
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -52,12 +52,13 @@ Anthy development package: static libraries, header files, and the like.
 %prep
 %setup -q
 
-# update dictionaries and apply patches
+# (ut) update dictionaries and apply patches
 cp %SOURCE1 .
 tar -jxf %SOURCE1
-cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic
-cp anthy-ut-patches-%{dic_date}/zipcode.t mkworddic
-#patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-depgraph.diff
+cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic/
+cp anthy-ut-patches-%{dic_date}/*.t mkworddic/
+rm -rf depgraph
+cp -r anthy-ut-patches-%{dic_date}/depgraph .
 patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-diclist.diff
 
 %build
@@ -65,7 +66,7 @@ patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-diclist.diff
 # parallel doesn't work at the time.
 make -j1
 
-# remove anthy's corpus. it often returns bad results.
+# disable anthy's corpus. it often returns bad results.
 make update_params0
 
 %install
