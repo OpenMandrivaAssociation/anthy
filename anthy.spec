@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 3
-%define	dic_date  20080207
+%define	release   %mkrel 4
+%define	dic_date  20080208
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
