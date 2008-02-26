@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 4
-%define	dic_date  20080208
+%define	release   %mkrel 5.%{dic_date}.1
+%define	dic_date  20080224
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -54,12 +54,12 @@ Anthy development package: static libraries, header files, and the like.
 
 # (ut) update dictionaries and apply patches
 cp %SOURCE1 .
-tar -jxf %SOURCE1
+tar -jxf anthy-ut-patches-%{dic_date}.tar.bz2
 cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic/
 cp anthy-ut-patches-%{dic_date}/*.t mkworddic/
+cp anthy-ut-patches-%{dic_date}/dict.args.in mkworddic/
 rm -rf depgraph
 cp -r anthy-ut-patches-%{dic_date}/depgraph .
-patch -p1 < anthy-ut-patches-%{dic_date}/anthy-modify-diclist.diff
 
 %build
 %configure2_5x
