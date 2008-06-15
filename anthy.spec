@@ -1,12 +1,9 @@
 %define	version   9100e
-%define	release   %mkrel 9.%{dic_date}.1
+%define	release   %mkrel 10.%{dic_date}.1
 %define	dic_date  20080605
 
-# b/c we include the .so for dlopen() in main lib package:
-%define _requires_exceptions devel\(.*\) 
-
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
+%define major 0
+%define libname %mklibname %{name} %{major}
 %define develname %mklibname -d %name
 
 Name:      anthy
@@ -32,7 +29,6 @@ Anthy is a free and secure Japanese input system.
 %package -n %{libname}
 Summary:    Anthy library
 Group:      System/Internationalization
-Provides:   %{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
 Anthy library.
@@ -42,8 +38,8 @@ Summary:    Headers of %{name} for development
 Group:      Development/C
 Requires:   %{libname} = %{version}
 Provides:   %{name}-devel = %{version}-%{release}
-Provides:   %{libname_orig}-devel = %{version}-%{release}
 Obsoletes:  %mklibname -d anthy 0
+Conflicts:  %{mklibname anthy 0} < 9100e-10
 
 %description -n %{develname}
 Anthy development package: static libraries, header files, and the like.
@@ -92,13 +88,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
-%{_libdir}/*.so.*
-# (tv) fix uim dloading libanthy.so
-%{_libdir}/*.so
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING
+%{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
