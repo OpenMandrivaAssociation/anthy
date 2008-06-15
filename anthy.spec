@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 8.%{dic_date}.1
-%define	dic_date  20080502
+%define	release   %mkrel 9.%{dic_date}.1
+%define	dic_date  20080605
 
 # b/c we include the .so for dlopen() in main lib package:
 %define _requires_exceptions devel\(.*\) 
@@ -78,8 +78,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
 
