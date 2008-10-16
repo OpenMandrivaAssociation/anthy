@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 12.%{dic_date}.1
-%define	dic_date  20080928
+%define	release   %mkrel 13.%{dic_date}.1
+%define	dic_date  20081015
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -20,7 +20,7 @@ Source1:   http://www.geocities.jp/ep3797/snapshot/anthy_dict/anthy-ut-patches-%
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
-BuildRequires:   emacs-bin
+BuildRequires:   emacs-bin automake
 
 %description
 Anthy is a free and secure Japanese input system.
@@ -51,19 +51,13 @@ Anthy development package: static libraries, header files, and the like.
 # (ut) update dictionaries and apply patches
 cp %SOURCE1 .
 tar -jxf anthy-ut-patches-%{dic_date}.tar.bz2
-cp anthy-ut-patches-%{dic_date}/*.ctd alt-cannadic/
-cp anthy-ut-patches-%{dic_date}/*.t mkworddic/
-cp anthy-ut-patches-%{dic_date}/dict.args.in mkworddic/
-rm -rf depgraph
-cp -r anthy-ut-patches-%{dic_date}/depgraph .
+cd anthy-ut-patches-%{dic_date}
+./apply-patches.sh
 
 %build
 %configure2_5x
 # parallel doesn't work at the time.
 make -j1
-
-# disable anthy's corpus. it often returns bad results.
-make update_params0
 
 %install
 rm -rf $RPM_BUILD_ROOT
