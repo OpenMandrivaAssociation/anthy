@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 16.%{dic_date}.1
-%define	dic_date  20081117
+%define	release   %mkrel 17.%{dic_date}.1
+%define	dic_date  20081203
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -16,7 +16,7 @@ URL:       http://www.sourceforge.jp/projects/anthy/
 Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
-Source1:   http://www.geocities.jp/ep3797/snapshot/anthy_dict/anthy-ut-patches-%{dic_date}.tar.bz2
+Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
