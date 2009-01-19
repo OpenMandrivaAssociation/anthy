@@ -17,6 +17,7 @@ Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
+Patch0:	   anthy-9100e-fix-str-fmt.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -47,6 +48,7 @@ Anthy development package: static libraries, header files, and the like.
 
 %prep
 %setup -q
+%patch0 -p0
 
 # (ut) update dictionaries and apply patches
 cp %SOURCE1 .
@@ -56,8 +58,7 @@ cd anthy-ut-patches-%{dic_date}
 
 %build
 %configure2_5x
-# parallel doesn't work at the time.
-make -j1
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
