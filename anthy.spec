@@ -1,6 +1,6 @@
 %define	version   9100e
-%define	release   %mkrel 17.%{dic_date}.1
-%define	dic_date  20081203
+%define	release   %mkrel 18.%{dic_date}.1
+%define	dic_date  20090119
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog DIARY NEWS README doc
 %{_bindir}/*
-%config(noreplace) %{_sysconfdir}/*
+%config %{_sysconfdir}/*
 %{_datadir}/anthy
 %{_datadir}/emacs/site-lisp/anthy/*
 
