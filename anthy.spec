@@ -1,5 +1,5 @@
-%define	version   9100e
-%define	release   %mkrel 19.%{dic_date}.1
+%define	version   9100g
+%define	release   %mkrel 1.%{dic_date}.1
 %define	dic_date  20090129
 
 %define major 0
