@@ -51,12 +51,15 @@ Anthy development package: static libraries, header files, and the like.
 %patch0 -p0
 
 # (ut) update dictionaries and apply patches
+%if 0
 cp %SOURCE1 .
 tar -jxf anthy-ut-patches-%{dic_date}.tar.bz2
 cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
+%endif
 
 %build
+autoreconf -fi
 %configure2_5x
 %make
 
