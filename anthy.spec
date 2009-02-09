@@ -55,6 +55,7 @@ cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
 
 %build
+autoreconf -fi
 %configure2_5x
 %make
 
