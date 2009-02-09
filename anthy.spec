@@ -1,6 +1,6 @@
-%define	version   9100g
+%define	version   9100h
 %define	release   %mkrel 1.%{dic_date}.1
-%define	dic_date  20090129
+%define	dic_date  20090209
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -17,7 +17,6 @@ Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
-Patch0:	   anthy-9100e-fix-str-fmt.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -48,18 +47,14 @@ Anthy development package: static libraries, header files, and the like.
 
 %prep
 %setup -q
-%patch0 -p0
 
 # (ut) update dictionaries and apply patches
-%if 0
 cp %SOURCE1 .
 tar -jxf anthy-ut-patches-%{dic_date}.tar.bz2
 cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
-%endif
 
 %build
-autoreconf -fi
 %configure2_5x
 %make
 
