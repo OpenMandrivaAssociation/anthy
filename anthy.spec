@@ -1,6 +1,6 @@
 %define	version   9100h
 %define	release   %mkrel 1.%{dic_date}.1
-%define	dic_date  20090209
+%define	dic_date  20090507
 
 %define major 0
 %define libname %mklibname %{name} %{major}
