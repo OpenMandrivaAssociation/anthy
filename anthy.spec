@@ -1,6 +1,6 @@
 %define	version   9100h
-%define	release   %mkrel 1.%{dic_date}.1
-%define	dic_date  20090507
+%define	release   %mkrel 10.%{dic_date}.1
+%define	dic_date  20090704
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -55,7 +55,6 @@ cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
 
 %build
-autoreconf -fi
 %configure2_5x
 %make
 
