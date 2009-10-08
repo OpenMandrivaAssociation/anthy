@@ -1,6 +1,6 @@
 %define	version   9100h
 %define	release   %mkrel 11.%{dic_date}.1
-%define	dic_date  20090731
+%define	dic_date  20091001
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -18,7 +18,6 @@ Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
 Patch0:    anthy-9100h-longdouble.patch
-
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 BuildRequires:   emacs-bin automake
