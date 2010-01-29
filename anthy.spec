@@ -1,6 +1,7 @@
 %define	version   9100h
-%define	release   %mkrel 11.%{dic_date}.1
-%define	dic_date  20091030
+%define	src_version   9100h.patch13B-23-iconv-ucdict.2009Z21.alt-depgraph-090712.alt-cannadic-091122
+%define	release   %mkrel 20.%{dic_date}.1
+%define	dic_date  20091228
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -12,8 +13,8 @@ Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
 License:   GPLv2+
-URL:       http://www.sourceforge.jp/projects/anthy/
-Source0:   http://sourceforge.jp/projects/anthy/files/%{name}-%{version}.tar.gz
+URL:       http://www.fenix.ne.jp/~G-HAL/soft/nosettle/#anthy
+Source0:   http://sourceforge.jp/projects/anthy/downloads/37536/%{name}-%{src_version}.tar.lzma
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
@@ -46,11 +47,11 @@ Anthy development package: static libraries, header files, and the like.
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}
 
 # (ut) update dictionaries and apply patches
 cp %SOURCE1 .
-tar -jxf anthy-ut-patches-%{dic_date}.tar.bz2
+tar jxf anthy-ut-patches-%{dic_date}.tar.bz2
 cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
 
