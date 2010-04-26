@@ -1,7 +1,7 @@
 %define	version   9100h
-%define	src_version   9100h.patch13B-23-iconv-ucdict.2009Z21.alt-depgraph-090712.alt-cannadic-091122
-%define	release   %mkrel 20.%{dic_date}.1
-%define	dic_date  20091228
+%define	src_version   9100h.patch13B-23-iconv.2010327.alt-depgraph-100120-patch100126.alt-cannadic-091230
+%define	release   %mkrel 21.%{dic_date}.1
+%define	dic_date  20100423
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -14,7 +14,7 @@ Release:   %{release}
 Group:     System/Internationalization
 License:   GPLv2+
 URL:       http://www.fenix.ne.jp/~G-HAL/soft/nosettle/#anthy
-Source0:   http://sourceforge.jp/projects/anthy/downloads/37536/%{name}-%{src_version}.tar.lzma
+Source0:   http://www.fenix.ne.jp/~G-HAL/soft/nosettle/%{name}-%{src_version}.tar.lzma
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
