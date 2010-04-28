@@ -1,6 +1,6 @@
 %define	version   9100h
 %define	src_version   9100h.patch13B-23-iconv.2010327.alt-depgraph-100120-patch100126.alt-cannadic-091230
-%define	release   %mkrel 21.%{dic_date}.1
+%define	release   %mkrel 21.%{dic_date}.2
 %define	dic_date  20100423
 
 %define major 0
