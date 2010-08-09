@@ -1,7 +1,7 @@
 %define	version   9100h
-%define	src_version   9100h.patch13B-23-iconv.2010327.alt-depgraph-100120-patch100126.alt-cannadic-091230
-%define	release   %mkrel 21.%{dic_date}.3
-%define	dic_date  20100423
+%define	src_version   9100h.patch13B-23-iconv-ucdict.2010629.alt-depgraph-100603d.alt-cannadic-100603-patch100628.zipdic-201005-patch100614
+%define	release   %mkrel 25.%{dic_date}.1
+%define	dic_date  20100710
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -18,7 +18,6 @@ Source0:   http://www.fenix.ne.jp/~G-HAL/soft/nosettle/%{name}-%{src_version}.ta
 
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
-Patch0:	   anthy-9100h-handle_NULL_getenv_HOME.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -55,8 +54,6 @@ cp %SOURCE1 .
 tar jxf anthy-ut-patches-%{dic_date}.tar.bz2
 cd anthy-ut-patches-%{dic_date}
 ./apply-patches.sh
-cd ..
-%patch0 -p1
 
 %build
 %configure2_5x
