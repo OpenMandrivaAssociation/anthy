@@ -1,7 +1,5 @@
 %define	version   9100h
-%define	src_version   9100h.patch13B-23-iconv-ucdict.2010629.alt-depgraph-100603d.alt-cannadic-100603-patch100628.zipdic-201005-patch100614
-%define	release   %mkrel 25.%{dic_date}.1
-%define	dic_date  20100710
+%define	dic_date  20110409
 
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -10,14 +8,12 @@
 Name:      anthy
 Summary:   A Japanese words input system
 Version:   %{version}
-Release:   %{release}
+Release:   25.%{dic_date}.1
 Group:     System/Internationalization
 License:   GPLv2+
-URL:       http://www.fenix.ne.jp/~G-HAL/soft/nosettle/#anthy
-Source0:   http://www.fenix.ne.jp/~G-HAL/soft/nosettle/%{name}-%{src_version}.tar.lzma
-
+URL:	http://www.geocities.jp/ep3797/index.html
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
-Source1:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy-ut-patches-%{dic_date}.tar.bz2
+Source0:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy/anthy-%{version}-%{dic_date}ut.tar.bz2
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -47,13 +43,7 @@ Anthy development package: static libraries, header files, and the like.
 
 
 %prep
-%setup -q -n %{name}-%{version}
-
-# (ut) update dictionaries and apply patches
-cp %SOURCE1 .
-tar jxf anthy-ut-patches-%{dic_date}.tar.bz2
-cd anthy-ut-patches-%{dic_date}
-./apply-patches.sh
+%setup -q -n %{name}-%{version}-%{dic_date}ut
 
 %build
 %configure2_5x
