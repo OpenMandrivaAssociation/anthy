@@ -8,7 +8,7 @@
 Name:      anthy
 Summary:   A Japanese words input system
 Version:   %{version}
-Release:   25.%{dic_date}.1
+Release:   25.%{dic_date}.2
 Group:     System/Internationalization
 License:   GPLv2+
 URL:	http://www.geocities.jp/ep3797/index.html
