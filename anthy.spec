@@ -75,6 +75,5 @@ rm -rf %{buildroot}
 %doc COPYING
 %{_libdir}/*.so
 %{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
