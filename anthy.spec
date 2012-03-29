@@ -15,7 +15,6 @@ URL:	http://www.geocities.jp/ep3797/index.html
 # http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source0:   http://ovh.dl.sourceforge.net/sourceforge/mdk-ut/anthy/anthy-%{version}-%{dic_date}ut.tar.bz2
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 BuildRequires:   emacs-bin automake
 
@@ -52,9 +51,6 @@ Anthy development package: static libraries, header files, and the like.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
