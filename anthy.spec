@@ -13,6 +13,9 @@ Url:		http://www.geocities.jp/ep3797/anthy_dict_01.html
 Source0:	http://sourceforge.net/projects/mdk-ut/files/30-source/source/%{name}-%{version}-%{dic_date}ut.tar.bz2
 
 BuildRequires:	emacs-bin
+BuildRequires:	gcc-c++, gcc, gcc-cpp
+
+
 
 %description
 Anthy is a free and secure Japanese input system.
@@ -37,7 +40,9 @@ Anthy development libraries, header files, and the like.
 %setup -qn %{name}-%{version}-%{dic_date}ut
 
 %build
-%configure2_5x --disable-static
+export CC=gcc
+export CXX=g++
+%configure --disable-static
 %make
 
 %install
