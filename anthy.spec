@@ -6,7 +6,7 @@
 Name:		anthy
 Summary:	A Japanese words input system
 Version:	9100h
-Release:	25.%{dic_date}.4
+Release:	25.%{dic_date}.5
 Group:		System/Internationalization
 License:	GPLv2+
 Url:		http://www.geocities.jp/ep3797/anthy_dict_01.html
@@ -47,7 +47,7 @@ export CXX=g++
 %makeinstall_std
 
 %files
-%doc AUTHORS ChangeLog DIARY NEWS README doc
+%doc AUTHORS DIARY NEWS README doc
 %config %{_sysconfdir}/*
 %{_bindir}/*
 %{_datadir}/anthy
