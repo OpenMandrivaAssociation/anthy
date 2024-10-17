@@ -9,7 +9,7 @@ Version:	9100h
 Release:	25.%{dic_date}.5
 Group:		System/Internationalization
 License:	GPLv2+
-Url:		http://www.geocities.jp/ep3797/anthy_dict_01.html
+Url:		https://www.geocities.jp/ep3797/anthy_dict_01.html
 Source0:	http://sourceforge.net/projects/mdk-ut/files/30-source/source/%{name}-%{version}-%{dic_date}ut.tar.bz2
 
 BuildRequires:	emacs-bin
